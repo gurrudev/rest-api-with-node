@@ -1,11 +1,10 @@
-const mongoose = require('mongoose')
-
+import mongoose from "mongoose";
 // Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema({
     email:{
         type:String,
         required:true,
-        unique:true,
+        //unique:true,
     },
     password:{
         type:String,
@@ -15,6 +14,6 @@ var userSchema = new mongoose.Schema({
 
 
 
-const Data = mongoose.model('Data', userSchema);
+const Data = mongoose.model('data', userSchema);
 
-module.exports = Data;
+export default Data
