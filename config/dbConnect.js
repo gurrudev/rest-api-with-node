@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv'
+dotenv.config()
 
 mongoose.set("strictQuery", false);
-const Dbconnect = mongoose
-  .connect("mongodb://127.0.0.1:27017/restAPI", {
+const Dbconnect = mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
 })
 

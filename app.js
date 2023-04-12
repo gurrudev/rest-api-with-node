@@ -4,16 +4,10 @@ import mongoose from "mongoose";
 import Data from "./models/dataSchema.js";
 import dotenv from "dotenv";
 import Dbconnect from "./config/dbConnect.js";
-
-Dbconnect.then(() => {
-    console.log("monogDB connected successfully");
-}).catch((error) => {
-    console.log(error);
-});
+dotenv.config();
 
 const app = express();
 
-const port = 8000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -47,6 +41,15 @@ app.delete("/data/:id", (req, res) => {
     });
 });
 
-app.listen(port, () => {
-    console.log(`Server started on: ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server started on: ${process.env.PORT}`);
+    try{
+        Dbconnect.then(() => {
+            console.log("monogDB connected!");
+        }).catch((error) => {
+            console.log(error);
+        });
+    }catch(err){
+        console.log(err)
+    }
 });
