@@ -13,22 +13,6 @@ const connect =  mongoose.connect(process.env.Mongo_URL, {
 })
 
 
-// // Declare the Schema of the Mongo model
-// var userSchema = new mongoose.Schema({
-//     email:{
-//         type:String,
-//         required:true,
-//         unique:true,
-//     },
-//     password:{
-//         type:String,
-//         required:true,
-//     },
-// });
-
-
-// const Data = mongoose.model('Data', userSchema);
-
 const Data = require('./models/dataSchema')
 
 const app = express();
@@ -59,7 +43,9 @@ app.post('/data', (req, res) =>{
 })
     
 app.put('/data/:id', (req, res) => {
-    
+    Data.findByIdAndUpdate(req.params.id, req.body, (err) =>{
+       res.json({message: `updated data ${req.params.id}`});
+    })
 });
 
 
