@@ -39,7 +39,6 @@ app.post('/data', (req, res) =>{
     data.save((err) =>{
         res.json(data)
     })
-
 })
     
 app.put('/data/:id', (req, res) => {
@@ -47,8 +46,6 @@ app.put('/data/:id', (req, res) => {
        res.json({message: `updated data ${req.params.id}`});
     })
 });
-
-
 
 
 app.listen(port, () => {
