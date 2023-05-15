@@ -1,6 +1,6 @@
 import Data from "../models/dataSchema";
 
-class CrusOperation {
+class CrudOperation {
 
     static getApiData = async (req, res) =>{
         try {
@@ -43,4 +43,4 @@ class CrusOperation {
     }
 }
 
-export default CrusOperation;
+export default CrudOperation;
